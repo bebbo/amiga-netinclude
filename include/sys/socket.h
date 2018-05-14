@@ -418,4 +418,25 @@ typedef	struct fd_set {
 
 /****************************************************************************/
 
+#ifndef __NO_NET_API
+
+extern int accept(int sockfd,struct sockaddr *cliaddr,socklen_t *addrlen);
+extern int bind(int socket, const struct sockaddr *address, socklen_t address_len);
+extern int connect(int socket, const struct sockaddr *address, socklen_t address_len);
+extern int getpeername(int socket, struct sockaddr *address, socklen_t *address_len);
+extern int getsockname(int socket, struct sockaddr *address, socklen_t *address_len);
+extern int getsockopt(int socket, int level, int option_name, void *option_value, socklen_t *option_len);
+extern int listen(int socket, int backlog);
+extern ssize_t recv(int socket, void *buffer, size_t length, int flags);
+extern ssize_t recvfrom(int socket, void *buffer, size_t length,int flags, struct sockaddr *address,socklen_t *address_len);
+extern ssize_t recvmsg(int socket, struct msghdr *message, int flags);
+extern ssize_t send(int socket, const void *buffer, size_t length, int flags);
+extern ssize_t sendmsg(int socket, const struct msghdr *message, int flags);
+extern ssize_t sendto(int socket, const void *message, size_t length,int flags, const struct sockaddr *dest_addr,socklen_t dest_len);
+extern int setsockopt(int socket, int level, int option_name, const void *option_value, socklen_t option_len);
+extern int shutdown(int socket, int how);
+extern int socket(int domain, int type, int protocol);
+
+#endif /* __NO_NET_API */ 
+
 #endif /* !_SYS_SOCKET_H_ */
