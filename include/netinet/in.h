@@ -83,7 +83,7 @@ extern "C" {
 /*
  * Data types.
  */
-typedef unsigned long	in_addr_t;
+typedef unsigned int	in_addr_t;
 typedef unsigned short	in_port_t;
 
 /*
