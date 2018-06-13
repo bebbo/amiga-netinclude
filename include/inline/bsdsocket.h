@@ -2,7 +2,7 @@
  * :ts=8
  *
  * 'Roadshow' -- Amiga TCP/IP stack
- * Copyright © 2001-2017 by Olaf Barthel.
+ * Copyright ï¿½ 2001-2017 by Olaf Barthel.
  * All Rights Reserved.
  *
  * Amiga specific TCP/IP 'C' header files;
@@ -107,10 +107,10 @@
   LONG _listen_backlog = (backlog); \
   LONG _listen__re = \
   ({ \
-  register struct Library * const __listen__bn __asm("a6") = (struct Library *) (BSDSOCKET_BASE_NAME);\
   register LONG __listen__re __asm("d0"); \
   register LONG __listen_sock __asm("d0") = (_listen_sock); \
   register LONG __listen_backlog __asm("d1") = (_listen_backlog); \
+  register struct Library * const __listen__bn __asm("a6") = (struct Library *) (BSDSOCKET_BASE_NAME);\
   __asm volatile ("jsr a6@(-42:W)" \
   : "=r"(__listen__re) \
   : "r"(__listen__bn), "r"(__listen_sock), "r"(__listen_backlog) \
