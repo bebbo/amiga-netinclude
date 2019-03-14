@@ -53,6 +53,10 @@
 extern __stdargs "C" {
 #endif /* __cplusplus */
 
+#ifndef INADDR_LOOPBACK
+# define INADDR_LOOPBACK	((unsigned long int) 0x7f000001)
+#endif /* INADDR_LOOPBACK */
+
 /****************************************************************************/
 
 /* The following is not part of the ISO 'C' (1994) standard. */

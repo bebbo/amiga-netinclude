@@ -120,7 +120,7 @@ struct hostent
 	__STRPTR *	h_aliases;	/* alias list */
 	__LONG		h_addrtype;	/* host address type */
 	__LONG		h_length;	/* length of address */
-	__BYTE **	h_addr_list;	/* list of addresses from name server */
+	char ** 	h_addr_list;	/* list of addresses from name server */
 #define	h_addr		h_addr_list[0]	/* address, for backward compatiblity */
 };
 
@@ -155,7 +155,7 @@ struct protoent
  * Error return codes from gethostbyname() and gethostbyaddr()
  * (left in extern int h_errno).
  */
-
+extern int h_errno;
 #define	NETDB_INTERNAL	-1		/* see errno */
 #define	NETDB_SUCCESS	0		/* no problem */
 #define	HOST_NOT_FOUND	1 		/* Authoritative Answer Host not found */

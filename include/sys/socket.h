@@ -193,9 +193,9 @@ struct	linger {
 #define	AF_CNT		21		/* Computer Network Technology */
 #define pseudo_AF_RTIP	22		/* Help Identify RTIP packets */
 #define	AF_IPX		23		/* Novell Internet Protocol */
+#define AF_INET6        23              /* IP version 6 */ 
 #define	AF_SIP		24		/* Simple Internet Protocol */
 #define pseudo_AF_PIP	25		/* Help Identify PIP packets */
-
 #define	AF_MAX		26
 
 /*
@@ -438,5 +438,10 @@ extern int shutdown(int socket, int how);
 extern int socket(int domain, int type, int protocol);
 
 #endif /* __NO_NET_API */ 
+
+/* SUS symbolic values for the second parm to shutdown(2) */
+#define SHUT_RD   0		/* == Win32 SD_RECEIVE */
+#define SHUT_WR   1		/* == Win32 SD_SEND    */
+#define SHUT_RDWR 2		/* == Win32 SD_BOTH    */ 
 
 #endif /* !_SYS_SOCKET_H_ */
