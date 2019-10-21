@@ -13,7 +13,7 @@
 
 #ifndef CLIB_BSDSOCKET_PROTOS_H
 #define CLIB_BSDSOCKET_PROTOS_H
-
+#if 0
 #ifdef __cplusplus
 extern "C" {
 #endif /* __cplusplus */
@@ -204,5 +204,5 @@ __stdargs LONG getnameinfo( struct sockaddr *sa, ULONG salen, STRPTR host, ULONG
 #ifdef __cplusplus
 }
 #endif /* __cplusplus */
-
+#endif
 #endif /* CLIB_BSDSOCKET_PROTOS_H */
