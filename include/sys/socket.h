@@ -406,14 +406,6 @@ typedef	struct fd_set {
 #include <devices/timer.h>
 #endif /* DEVICES_TIMER_H */
 
-#ifndef tv_sec
-#define tv_sec tv_secs
-#endif /* tv_sec */
-
-#ifndef tv_usec
-#define tv_usec tv_micro
-#endif /* tv_usec */
-
 #endif /* __NO_NETINCLUDE_TIMEVAL */
 
 /****************************************************************************/
