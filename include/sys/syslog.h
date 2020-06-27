@@ -47,6 +47,9 @@
 #ifndef	_SYS_SYSLOG_H
 #define	_SYS_SYSLOG_H
 
+#include <stdarg.h>
+#include <sys/cdefs.h>
+
 /****************************************************************************/
 
 /*

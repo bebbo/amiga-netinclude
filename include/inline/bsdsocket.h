@@ -2036,17 +2036,17 @@ static __inline__ LONG ___AddNetMonitorHookTags(struct Library * SocketBase, LON
 })
 
 #define getaddrinfo(hostname, servname, hints, res) ({ \
-  STRPTR _getaddrinfo_hostname = (hostname); \
-  STRPTR _getaddrinfo_servname = (servname); \
-  struct addrinfo * _getaddrinfo_hints = (hints); \
+  CONST_STRPTR _getaddrinfo_hostname = (hostname); \
+  CONST_STRPTR _getaddrinfo_servname = (servname); \
+  const struct addrinfo * _getaddrinfo_hints = (hints); \
   struct addrinfo ** _getaddrinfo_res = (res); \
   LONG _getaddrinfo__re = \
   ({ \
   register struct Library * const __getaddrinfo__bn __asm("a6") = (struct Library *) (BSDSOCKET_BASE_NAME); register int _d1 __asm("d1"); register int _a0 __asm("a0"); register int _a1 __asm("a1");\
   register LONG __getaddrinfo__re __asm("d0"); \
-  register STRPTR __getaddrinfo_hostname __asm("a0") = (_getaddrinfo_hostname); \
-  register STRPTR __getaddrinfo_servname __asm("a1") = (_getaddrinfo_servname); \
-  register struct addrinfo * __getaddrinfo_hints __asm("a2") = (_getaddrinfo_hints); \
+  register CONST_STRPTR __getaddrinfo_hostname __asm("a0") = (_getaddrinfo_hostname); \
+  register CONST_STRPTR __getaddrinfo_servname __asm("a1") = (_getaddrinfo_servname); \
+  register const struct addrinfo * __getaddrinfo_hints __asm("a2") = (_getaddrinfo_hints); \
   register struct addrinfo ** __getaddrinfo_res __asm("a3") = (_getaddrinfo_res); \
   __asm volatile ("jsr a6@(-810:W)" \
   : "=r" (_d1), "=r" (_a0), "=r" (_a1),  "=r"(__getaddrinfo__re) \
@@ -2074,7 +2074,7 @@ static __inline__ LONG ___AddNetMonitorHookTags(struct Library * SocketBase, LON
 })
 
 #define getnameinfo(sa, salen, host, hostlen, serv, servlen, flags) ({ \
-  struct sockaddr * _getnameinfo_sa = (sa); \
+  const struct sockaddr * _getnameinfo_sa = (sa); \
   ULONG _getnameinfo_salen = (salen); \
   STRPTR _getnameinfo_host = (host); \
   ULONG _getnameinfo_hostlen = (hostlen); \
@@ -2085,7 +2085,7 @@ static __inline__ LONG ___AddNetMonitorHookTags(struct Library * SocketBase, LON
   ({ \
   register struct Library * const __getnameinfo__bn __asm("a6") = (struct Library *) (BSDSOCKET_BASE_NAME); register int _d1 __asm("d1"); register int _a0 __asm("a0"); register int _a1 __asm("a1");\
   register LONG __getnameinfo__re __asm("d0"); \
-  register struct sockaddr * __getnameinfo_sa __asm("a0") = (_getnameinfo_sa); \
+  register const struct sockaddr * __getnameinfo_sa __asm("a0") = (_getnameinfo_sa); \
   register ULONG __getnameinfo_salen __asm("d0") = (_getnameinfo_salen); \
   register STRPTR __getnameinfo_host __asm("a1") = (_getnameinfo_host); \
   register ULONG __getnameinfo_hostlen __asm("d1") = (_getnameinfo_hostlen); \
