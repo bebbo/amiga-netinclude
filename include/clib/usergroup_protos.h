@@ -31,7 +31,6 @@ extern "C" {
 #endif
 
 LONG ug_SetupContextTagList( STRPTR name, struct TagItem *tags );
-LONG ug_SetupContextTags( STRPTR name, ... );
 LONG ug_GetErr( VOID );
 STRPTR ug_StrError( LONG err );
 LONG getuid( VOID );
@@ -45,8 +44,8 @@ LONG setgid( LONG gid );
 LONG getgroups( LONG gidsetlen, LONG *gidset );
 LONG setgroups( LONG gidsetlen, LONG *gidset );
 LONG initgroups( STRPTR name, LONG basegid );
-struct passwd *getpwnam( STRPTR login );
-struct passwd *getpwuid( LONG uid );
+struct passwd *getpwnam( const char * login );
+struct passwd *getpwuid( uid_t uid );
 VOID setpwent( VOID );
 struct passwd *getpwent( VOID );
 VOID endpwent( VOID );

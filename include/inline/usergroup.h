@@ -58,9 +58,9 @@
   _ug_SetupContextTagList__re; \
 })
 
-static __attribute((noinline)) LONG ug_SetupContextTags(ULONG tag, ...)
+static __attribute((noinline)) LONG ug_SetupContextTags(STRPTR name, ULONG tag, ...)
 {
-  return ug_SetupContextTagList(&tag);
+  return ug_SetupContextTagList(name, &tag);
 }
 
 #define ug_GetErr() ({ \

@@ -1166,9 +1166,9 @@ static __attribute((noinline)) LONG DeleteRouteTags(ULONG tag, ...)
   _AddInterfaceTagList__re; \
 })
 
-static __attribute((noinline)) LONG AddInterfaceTags(ULONG tag, ...)
+static __attribute((noinline)) LONG AddInterfaceTags(STRPTR interface_name, STRPTR device_name, LONG unit, ULONG tag, ...)
 {
-  return AddInterfaceTagList(&tag);
+  return AddInterfaceTagList(interface_name, device_name, unit, &tag);
 }
 
 #define ConfigureInterfaceTagList(interface_name, tags) ({ \
@@ -1189,9 +1189,9 @@ static __attribute((noinline)) LONG AddInterfaceTags(ULONG tag, ...)
   _ConfigureInterfaceTagList__re; \
 })
 
-static __attribute((noinline)) LONG ConfigureInterfaceTags(ULONG tag, ...)
+static __attribute((noinline)) LONG ConfigureInterfaceTags(STRPTR interface_name, ULONG tag, ...)
 {
-  return ConfigureInterfaceList(&tag);
+  return ConfigureInterfaceList(interface_name, &tag);
 }
 
 #define ReleaseInterfaceList(list) ({ \
@@ -1238,9 +1238,9 @@ static __attribute((noinline)) LONG ConfigureInterfaceTags(ULONG tag, ...)
   _QueryInterfaceTagList__re; \
 })
 
-static __attribute((noinline)) LONG QueryInterfaceTags(ULONG tag, ...)
+static __attribute((noinline)) LONG QueryInterfaceTags(STRPTR interface_name, ULONG tag, ...)
 {
-  return QueryInterfaceList(&tag);
+  return QueryInterfaceList(interface_name, &tag);
 }
 
 #define CreateAddrAllocMessageA(version, protocol, interface_name, result_ptr, tags) ({ \
@@ -1332,9 +1332,9 @@ static __inline__ LONG ___CreateAddrAllocMessage(struct Library * SocketBase, LO
   _AddNetMonitorHookTagList__re; \
 })
 
-static __attribute((noinline)) LONG AddNetMonitorHookTags(ULONG tag, ...)
+static __attribute((noinline)) LONG AddNetMonitorHookTags(LONG type, struct Hook * hook, ULONG tag, ...)
 {
-  return AddNetMonitorHookList(&tag);
+  return AddNetMonitorHookList(type, hook, &tag);
 }
 
 #define RemoveNetMonitorHook(hook) ({ \
