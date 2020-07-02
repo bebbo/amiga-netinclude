@@ -58,14 +58,10 @@
   _ug_SetupContextTagList__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___ug_SetupContextTags(struct Library * UserGroupBase, STRPTR name, ...)
+static __attribute((noinline)) LONG ug_SetupContextTags(ULONG tag, ...)
 {
-  return ug_SetupContextTagList(name, (struct TagItem *) ((ULONG) &name + sizeof(STRPTR)));
+  return ug_SetupContextTagList(&tag);
 }
-
-#define ug_SetupContextTags(name...) ___ug_SetupContextTags(USERGROUP_BASE_NAME, name)
-#endif
 
 #define ug_GetErr() ({ \
   LONG _ug_GetErr__re = \

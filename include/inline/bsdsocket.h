@@ -907,14 +907,10 @@ static __inline__ VOID ___syslog(struct Library * SocketBase, LONG pri, STRPTR m
   _SocketBaseTagList__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___SocketBaseTags(struct Library * SocketBase, Tag tags, ...)
+static __attribute((noinline)) LONG SocketBaseTags(ULONG tag, ...)
 {
-  return SocketBaseTagList((struct TagItem *) &tags);
+  return SocketBaseTagList(&tag);
 }
-
-#define SocketBaseTags(tags...) ___SocketBaseTags(BSDSOCKET_BASE_NAME, tags)
-#endif
 
 #define GetSocketEvents(event_ptr) ({ \
   ULONG * _GetSocketEvents_event_ptr = (event_ptr); \
@@ -1092,14 +1088,10 @@ static __inline__ LONG ___SocketBaseTags(struct Library * SocketBase, Tag tags, 
   _AddRouteTagList__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___AddRouteTags(struct Library * SocketBase, Tag tags, ...)
+static __attribute((noinline)) LONG AddRouteTags(ULONG tag, ...)
 {
-  return AddRouteTagList((struct TagItem *) &tags);
+  return AddRouteTagList(&tag);
 }
-
-#define AddRouteTags(tags...) ___AddRouteTags(BSDSOCKET_BASE_NAME, tags)
-#endif
 
 #define DeleteRouteTagList(tags) ({ \
   struct TagItem * _DeleteRouteTagList_tags = (tags); \
@@ -1117,14 +1109,10 @@ static __inline__ LONG ___AddRouteTags(struct Library * SocketBase, Tag tags, ..
   _DeleteRouteTagList__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___DeleteRouteTags(struct Library * SocketBase, Tag tags, ...)
+static __attribute((noinline)) LONG DeleteRouteTags(ULONG tag, ...)
 {
-  return DeleteRouteTagList((struct TagItem *) &tags);
+  return DeleteRouteTagList(&tag);
 }
-
-#define DeleteRouteTags(tags...) ___DeleteRouteTags(BSDSOCKET_BASE_NAME, tags)
-#endif
 
 #define FreeRouteInfo(buf) ({ \
   struct rt_msghdr * _FreeRouteInfo_buf = (buf); \
@@ -1178,14 +1166,10 @@ static __inline__ LONG ___DeleteRouteTags(struct Library * SocketBase, Tag tags,
   _AddInterfaceTagList__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___AddInterfaceTags(struct Library * SocketBase, STRPTR interface_name, STRPTR device_name, LONG unit, Tag tags, ...)
+static __attribute((noinline)) LONG AddInterfaceTags(ULONG tag, ...)
 {
-  return AddInterfaceTagList(interface_name, device_name, unit, (struct TagItem *) &tags);
+  return AddInterfaceTagList(&tag);
 }
-
-#define AddInterfaceTags(interface_name, device_name, unit...) ___AddInterfaceTags(BSDSOCKET_BASE_NAME, interface_name, device_name, unit)
-#endif
 
 #define ConfigureInterfaceTagList(interface_name, tags) ({ \
   STRPTR _ConfigureInterfaceTagList_interface_name = (interface_name); \
@@ -1205,14 +1189,10 @@ static __inline__ LONG ___AddInterfaceTags(struct Library * SocketBase, STRPTR i
   _ConfigureInterfaceTagList__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___ConfigureInterfaceTags(struct Library * SocketBase, STRPTR interface_name, Tag tags, ...)
+static __attribute((noinline)) LONG ConfigureInterfaceTags(ULONG tag, ...)
 {
-  return ConfigureInterfaceTagList(interface_name, (struct TagItem *) &tags);
+  return ConfigureInterfaceList(&tag);
 }
-
-#define ConfigureInterfaceTags(interface_name...) ___ConfigureInterfaceTags(BSDSOCKET_BASE_NAME, interface_name)
-#endif
 
 #define ReleaseInterfaceList(list) ({ \
   struct List * _ReleaseInterfaceList_list = (list); \
@@ -1258,14 +1238,10 @@ static __inline__ LONG ___ConfigureInterfaceTags(struct Library * SocketBase, ST
   _QueryInterfaceTagList__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___QueryInterfaceTags(struct Library * SocketBase, STRPTR interface_name, Tag tags, ...)
+static __attribute((noinline)) LONG QueryInterfaceTags(ULONG tag, ...)
 {
-  return QueryInterfaceTagList(interface_name, (struct TagItem *) &tags);
+  return QueryInterfaceList(&tag);
 }
-
-#define QueryInterfaceTags(interface_name...) ___QueryInterfaceTags(BSDSOCKET_BASE_NAME, interface_name)
-#endif
 
 #define CreateAddrAllocMessageA(version, protocol, interface_name, result_ptr, tags) ({ \
   LONG _CreateAddrAllocMessageA_version = (version); \
@@ -1356,14 +1332,10 @@ static __inline__ LONG ___CreateAddrAllocMessage(struct Library * SocketBase, LO
   _AddNetMonitorHookTagList__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___AddNetMonitorHookTags(struct Library * SocketBase, LONG type, struct Hook * hook, Tag tags, ...)
+static __attribute((noinline)) LONG AddNetMonitorHookTags(ULONG tag, ...)
 {
-  return AddNetMonitorHookTagList(type, hook, (struct TagItem *) &tags);
+  return AddNetMonitorHookList(&tag);
 }
-
-#define AddNetMonitorHookTags(type, hook...) ___AddNetMonitorHookTags(BSDSOCKET_BASE_NAME, type, hook)
-#endif
 
 #define RemoveNetMonitorHook(hook) ({ \
   struct Hook * _RemoveNetMonitorHook_hook = (hook); \
