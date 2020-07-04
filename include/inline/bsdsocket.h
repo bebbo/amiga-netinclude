@@ -792,14 +792,11 @@
   } \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ VOID ___syslog(struct Library * SocketBase, LONG pri, STRPTR msg, LONG args, ...)
-{
-  vsyslog(pri, msg, (APTR) &args);
-}
+#ifndef NO_INLINE_VARARGS
+#define syslog(pri, msg, ...) \
+     ({_sfdc_vararg _args[] = { __VA_ARGS__ }; vsyslog((pri), (msg), (const APTR) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
-#define syslog(pri, msg...) ___syslog(BSDSOCKET_BASE_NAME, pri, msg)
-#endif
 
 #define Dup2Socket(old_socket, new_socket) ({ \
   LONG _Dup2Socket_old_socket = (old_socket); \
@@ -907,10 +904,10 @@ static __inline__ VOID ___syslog(struct Library * SocketBase, LONG pri, STRPTR m
   _SocketBaseTagList__re; \
 })
 
-static __attribute((noinline)) LONG SocketBaseTags(ULONG tag, ...)
-{
-  return SocketBaseTagList(&tag);
-}
+#ifndef NO_INLINE_VARARGS
+#define SocketBaseTags(tag0, ...) \
+     ({_sfdc_vararg _args[] = {tag0, __VA_ARGS__ }; SocketBaseTagList((struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define GetSocketEvents(event_ptr) ({ \
   ULONG * _GetSocketEvents_event_ptr = (event_ptr); \
@@ -1088,10 +1085,10 @@ static __attribute((noinline)) LONG SocketBaseTags(ULONG tag, ...)
   _AddRouteTagList__re; \
 })
 
-static __attribute((noinline)) LONG AddRouteTags(ULONG tag, ...)
-{
-  return AddRouteTagList(&tag);
-}
+#ifndef NO_INLINE_VARARGS
+#define AddRouteTags(tag0, ...) \
+     ({_sfdc_vararg _args[] = {tag0, __VA_ARGS__ }; AddRouteTagList((struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define DeleteRouteTagList(tags) ({ \
   struct TagItem * _DeleteRouteTagList_tags = (tags); \
@@ -1109,10 +1106,10 @@ static __attribute((noinline)) LONG AddRouteTags(ULONG tag, ...)
   _DeleteRouteTagList__re; \
 })
 
-static __attribute((noinline)) LONG DeleteRouteTags(ULONG tag, ...)
-{
-  return DeleteRouteTagList(&tag);
-}
+#ifndef NO_INLINE_VARARGS
+#define DeleteRouteTags(tag0, ...) \
+     ({_sfdc_vararg _args[] = {tag0, __VA_ARGS__ }; DeleteRouteTagList((struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define FreeRouteInfo(buf) ({ \
   struct rt_msghdr * _FreeRouteInfo_buf = (buf); \
@@ -1166,10 +1163,10 @@ static __attribute((noinline)) LONG DeleteRouteTags(ULONG tag, ...)
   _AddInterfaceTagList__re; \
 })
 
-static __attribute((noinline)) LONG AddInterfaceTags(STRPTR interface_name, STRPTR device_name, LONG unit, ULONG tag, ...)
-{
-  return AddInterfaceTagList(interface_name, device_name, unit, &tag);
-}
+#ifndef NO_INLINE_VARARGS
+#define AddInterfaceTags(interface_name, device_name, unit, ...) \
+     ({_sfdc_vararg _args[] = { __VA_ARGS__ }; AddInterfaceTagList(interface_name, device_name, unit, (struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define ConfigureInterfaceTagList(interface_name, tags) ({ \
   STRPTR _ConfigureInterfaceTagList_interface_name = (interface_name); \
@@ -1189,10 +1186,10 @@ static __attribute((noinline)) LONG AddInterfaceTags(STRPTR interface_name, STRP
   _ConfigureInterfaceTagList__re; \
 })
 
-static __attribute((noinline)) LONG ConfigureInterfaceTags(STRPTR interface_name, ULONG tag, ...)
-{
-  return ConfigureInterfaceList(interface_name, &tag);
-}
+#ifndef NO_INLINE_VARARGS
+#define ConfigureInterfaceTags(interface_name,...) \
+     ({_sfdc_vararg _args[] = { __VA_ARGS__ }; ConfigureInterfaceTagList(interface_name, (struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define ReleaseInterfaceList(list) ({ \
   struct List * _ReleaseInterfaceList_list = (list); \
@@ -1238,10 +1235,10 @@ static __attribute((noinline)) LONG ConfigureInterfaceTags(STRPTR interface_name
   _QueryInterfaceTagList__re; \
 })
 
-static __attribute((noinline)) LONG QueryInterfaceTags(STRPTR interface_name, ULONG tag, ...)
-{
-  return QueryInterfaceList(interface_name, &tag);
-}
+#ifndef NO_INLINE_VARARGS
+#define QueryInterfaceTags(interface_name,...) \
+     ({_sfdc_vararg _args[] = { __VA_ARGS__ }; QueryInterfaceTagList(interface_name, (struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define CreateAddrAllocMessageA(version, protocol, interface_name, result_ptr, tags) ({ \
   LONG _CreateAddrAllocMessageA_version = (version); \

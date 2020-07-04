@@ -58,10 +58,10 @@
   _ug_SetupContextTagList__re; \
 })
 
-static __attribute((noinline)) LONG ug_SetupContextTags(STRPTR name, ULONG tag, ...)
-{
-  return ug_SetupContextTagList(name, &tag);
-}
+#ifndef NO_INLINE_VARARGS
+#define ug_SetupContextTags(name, ...) \
+     ({_sfdc_vararg _args[] = { __VA_ARGS__ }; ug_SetupContextTagList(name, (struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define ug_GetErr() ({ \
   LONG _ug_GetErr__re = \
