@@ -1264,14 +1264,10 @@
   _CreateAddrAllocMessageA__re; \
 })
 
-#ifndef NO_INLINE_STDARG
-static __inline__ LONG ___CreateAddrAllocMessage(struct Library * SocketBase, LONG version, LONG protocol, STRPTR interface_name, struct AddressAllocationMessage ** result_ptr, Tag tags, ...)
-{
-  return CreateAddrAllocMessageA(version, protocol, interface_name, result_ptr, (struct TagItem *) &tags);
-}
-
-#define CreateAddrAllocMessage(version, protocol, interface_name, result_ptr...) ___CreateAddrAllocMessage(BSDSOCKET_BASE_NAME, version, protocol, interface_name, result_ptr)
-#endif
+#ifndef NO_INLINE_VARARGS
+#define CreateAddrAllocMessage(version, protocol, interface_name, result_ptr, ...) \
+     ({_sfdc_vararg _args[] = {__VA_ARGS__ }; CreateAddrAllocMessageA(version, protocol, interface_name, result_ptr, (struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define DeleteAddrAllocMessage(aam) ({ \
   struct AddressAllocationMessage * _DeleteAddrAllocMessage_aam = (aam); \
@@ -1329,10 +1325,10 @@ static __inline__ LONG ___CreateAddrAllocMessage(struct Library * SocketBase, LO
   _AddNetMonitorHookTagList__re; \
 })
 
-static __attribute((noinline)) LONG AddNetMonitorHookTags(LONG type, struct Hook * hook, ULONG tag, ...)
-{
-  return AddNetMonitorHookList(type, hook, &tag);
-}
+#ifndef NO_INLINE_VARARGS
+#define AddNetMonitorHookTags(type, hook,...) \
+     ({_sfdc_vararg _args[] = { __VA_ARGS__ }; AddNetMonitorHookTagList(type, hook, (struct TagItem *) _args); })
+#endif /* !NO_INLINE_VARARGS */
 
 #define RemoveNetMonitorHook(hook) ({ \
   struct Hook * _RemoveNetMonitorHook_hook = (hook); \
