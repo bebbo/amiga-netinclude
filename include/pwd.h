@@ -98,7 +98,7 @@ struct passwd {
 __BEGIN_DECLS
 __stdargs struct passwd	*getpwuid __P((uid_t));
 __stdargs struct passwd	*getpwnam __P((const char *));
-#ifndef _POSIX_SOURCE
+#if 1 // ndef _POSIX_SOURCE
 __stdargs struct passwd	*getpwent __P((void));
 __stdargs int		 setpassent __P((int));
 __stdargs int		 setpwent __P((void));

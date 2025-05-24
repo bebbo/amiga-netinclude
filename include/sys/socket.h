@@ -387,11 +387,6 @@ typedef	struct fd_set {
  #pragma default-align
 #endif
 
-/****************************************************************************/
-
-#ifdef __cplusplus
-}
-#endif /* __cplusplus */
 
 /****************************************************************************/
 
@@ -430,6 +425,12 @@ extern __stdargs int shutdown(int socket, int how);
 extern __stdargs int socket(int domain, int type, int protocol);
 
 #endif /* __NO_NET_API */ 
+
+/****************************************************************************/
+
+#ifdef __cplusplus
+}
+#endif /* __cplusplus */
 
 /* SUS symbolic values for the second parm to shutdown(2) */
 #define SHUT_RD   0		/* == Win32 SD_RECEIVE */
